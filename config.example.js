@@ -12,7 +12,9 @@ const CONFIG = {
     'openclaw/default': 'OpenClaw (default)',
     'openclaw/main': '脏脏 (主会话 / deepseek-v4-flash)',
     'openclaw/chat': 'chat (deepseek-v4-flash)',
-    'openclaw/kimi': 'kimi (Kimi K2.6)'
+    'openclaw/kimi': 'kimi (Kimi K2.6)',
+    'openclaw/career': '职业规划师 (deepseek)',
+    'openclaw/local': '本地小助手 (ollama qwen2.5vl:3b)'
   },
 
   // 常用工具模板：点击后自动填入提示词（可再手动改）
