@@ -1,0 +1,28 @@
+{
+  "manifest_version": 3,
+  "name": "OpenClaw Sender",
+  "version": "1.0.1",
+  "description": "抓取网页内容，选择常用工具/模型/提示词，发送给 OpenClaw",
+  "permissions": [
+    "activeTab",
+    "contextMenus",
+    "storage",
+    "scripting",
+    "notifications"
+  ],
+  "host_permissions": [
+    "http://localhost:18789/*"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_title": "发送当前页面到 OpenClaw",
+    "default_icon": {
+      "128": "icon.png"
+    }
+  },
+  "icons": {
+    "128": "icon.png"
+  }
+}

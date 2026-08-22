@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+ <meta charset="UTF-8">
+ <style>
+  * { box-sizing: border-box; }
+  body {
+   width: 100%; min-height: 100vh; margin: 0; padding: 14px;
+   font-family: system-ui, 'Segoe UI', 'Microsoft YaHei', sans-serif;
+   background: #f7f8fa; color: #222;
+   display: flex; flex-direction: column; gap: 10px;
+  }
+  header { display: flex; justify-content: space-between; align-items: center; }
+  h1 { font-size: 15px; margin: 0; }
+  #settingsBtn { border: none; background: none; font-size: 16px; cursor: pointer; padding: 4px; }
+  #settingsPanel { background: #fff; border: 1px solid #ddd; border-radius: 8px; padding: 10px; display: flex; flex-direction: column; gap: 6px; }
+  #settingsPanel label { font-size: 12px; color: #555; display: flex; flex-direction: column; gap: 3px; }
+  #settingsPanel input { width: 100%; padding: 6px; border: 1px solid #ccc; border-radius: 4px; font-size: 12px; }
+  #saveSettings { padding: 6px 10px; border: none; border-radius: 4px; background: #0066cc; color: #fff; cursor: pointer; font-size: 12px; }
+  #saveHint { font-size: 12px; color: #1a7f37; }
+  #pageInfo { background: #fff; border: 1px solid #e3e6ea; border-radius: 8px; padding: 8px 10px; }
+  #pageTitle { font-weight: 600; font-size: 13px; }
+  #pageUrl { font-size: 11px; color: #888; word-break: break-all; margin-top: 2px; }
+  details { background: #fff; border: 1px solid #e3e6ea; border-radius: 8px; padding: 8px 10px; }
+  summary { font-size: 12px; color: #555; cursor: pointer; }
+  #contentText { font-size: 11px; color: #444; max-height: 150px; overflow: auto; white-space: pre-wrap; word-break: break-word; background: #fafbfc; border-radius: 6px; padding: 8px; margin: 6px 0 0; }
+  .label { font-size: 12px; color: #555; }
+  #tools { display: flex; flex-wrap: wrap; gap: 6px; }
+  .tool-chip { padding: 6px 10px; border: 1px solid #ccc; border-radius: 14px; background: #fff; font-size: 12px; cursor: pointer; }
+  .tool-chip:hover { border-color: #0066cc; }
+  .tool-chip.active { background: #0066cc; color: #fff; border-color: #0066cc; }
+  select, textarea { width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 6px; font-size: 13px; font-family: inherit; background: #fff; }
+  textarea { resize: vertical; min-height: 52px; }
+  #actions { display: flex; gap: 8px; }
+  #sendBtn { flex: 1; padding: 10px; background: #0066cc; color: #fff; border: none; border-radius: 6px; font-size: 14px; cursor: pointer; }
+  #sendBtn:disabled { background: #9ac1e8; cursor: not-allowed; }
+  #clearBtn { padding: 10px 14px; background: #fff; border: 1px solid #ccc; border-radius: 6px; cursor: pointer; font-size: 13px; }
+  #replyWrap { background: #fff; border: 1px solid #e3e6ea; border-radius: 8px; padding: 10px; display: flex; flex-direction: column; gap: 6px; }
+  #replyWrap .label { display: flex; justify-content: space-between; align-items: center; }
+  #copyBtn { font-size: 11px; border: 1px solid #ccc; background: #fff; border-radius: 4px; padding: 2px 8px; cursor: pointer; }
+  #reply { font-size: 13px; line-height: 1.6; max-height: 340px; overflow-y: auto; }
+  .turn { margin-bottom: 10px; }
+  .msg.user { color: #333; background: #eef4ff; border-radius: 6px; padding: 6px 8px; font-size: 12px; margin-bottom: 4px; }
+  .msg.ai { color: #111; white-space: pre-wrap; word-break: break-word; }
+  #status { font-size: 11px; color: #888; min-height: 14px; }
+ </style>
+</head>
+<body>
+ <header>
+  <h1>🦞 发送到 OpenClaw</h1>
+  <button id="settingsBtn" title="设置">⚙️</button>
+ </header>
+
+ <div id="settingsPanel" hidden>
+  <label>网关地址<input id="gwUrl" placeholder="http://localhost:18789"></label>
+  <label>Token<input id="gwToken" type="password" placeholder="gateway token"></label>
+  <div><button id="saveSettings">保存设置</button> <span id="saveHint"></span></div>
+ </div>
+
+ <div id="pageInfo">
+  <div id="pageTitle"></div>
+  <div id="pageUrl"></div>
+ </div>
+
+ <details open>
+  <summary>📄 内容预览（已抓取）</summary>
+  <pre id="contentText"></pre>
+ </details>
+
+ <div class="label">常用工具</div>
+ <div id="tools"></div>
+
+ <div class="label">模型对话</div>
+ <select id="model"></select>
+
+ <div class="label">提示词（可修改）</div>
+ <textarea id="prompt" placeholder="输入提示词…"></textarea>
+
+ <div id="actions">
+  <button id="sendBtn">🚀 发送</button>
+  <button id="clearBtn" title="清空对话">清空</button>
+ </div>
+
+ <div id="replyWrap" hidden>
+  <div class="label">回复 <button id="copyBtn">📋 复制</button></div>
+  <div id="reply"></div>
+ </div>
+
+ <div id="status"></div>
+
+ <script src="config.js"></script>
+ <script src="dialog.js"></script>
+</body>
+</html>
