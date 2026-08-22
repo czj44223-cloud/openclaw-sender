@@ -14,7 +14,9 @@ const CONFIG = {
     'openclaw/chat': 'chat (deepseek-v4-flash)',
     'openclaw/kimi': 'kimi (Kimi K2.6)',
     'openclaw/career': '职业规划师 (deepseek)',
-    'openclaw/local': '本地小助手 (ollama qwen2.5vl:3b)'
+    'openclaw/local': '本地小助手 (ollama qwen2.5vl:3b)',
+    'openclaw/local-coder': '本地代码助手 (ollama coder 14b)',
+    'openclaw/local-r1': '本地推理 (ollama deepseek-r1 14b)'
   },
 
   // 常用工具模板：点击后自动填入提示词（可再手动改）
