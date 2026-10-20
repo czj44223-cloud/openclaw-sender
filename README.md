@@ -1,5 +1,7 @@
 # OpenClaw Sender 浏览器扩展
 
+[English](README.en.md) | 中文
+
 把网页内容一键发送给本地 [OpenClaw](https://github.com/openclaw/openclaw) 网关处理：抓取正文 → 弹窗选择常用工具 / 模型 / 提示词 → 流式回复，支持多轮对话。
 
 ## 功能
@@ -48,3 +50,7 @@ openclaw-sender/
 - MV3 service worker；`activeTab` + `scripting` 按需注入提取逻辑，不常驻 content script
 - 流式请求走 `chrome.runtime.connect` port 通道，失败自动回退非流式
 - 页面内容暂存用 `chrome.storage.session`（浏览器关闭即清）
+
+## License
+
+[MIT](LICENSE) © 2026 litterburger
